@@ -1,0 +1,701 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "5",
+  "dialect": "sqlite",
+  "tables": {
+    "fetchlog": {
+      "name": "fetchlog",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "url": {
+          "autoincrement": false,
+          "name": "url",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response": {
+          "autoincrement": false,
+          "name": "response",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "body": {
+          "autoincrement": false,
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cdate": {
+          "autoincrement": false,
+          "name": "cdate",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "autoincrement": false,
+          "name": "source",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "user": {
+      "name": "user",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "autoincrement": false,
+          "name": "username",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "autoincrement": false,
+          "name": "password",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pos_id": {
+          "autoincrement": false,
+          "name": "pos_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_login": {
+          "autoincrement": false,
+          "name": "last_login",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "cdate": {
+          "autoincrement": false,
+          "name": "cdate",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "active": {
+          "autoincrement": false,
+          "name": "active",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "user_username": {
+          "name": "user_username",
+          "columns": [
+            "username"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "daily": {
+      "name": "daily",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pos_id": {
+          "autoincrement": false,
+          "name": "pos_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nama": {
+          "autoincrement": false,
+          "name": "nama",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sampling": {
+          "autoincrement": false,
+          "name": "sampling",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raw": {
+          "autoincrement": false,
+          "name": "raw",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_count": {
+          "autoincrement": false,
+          "name": "data_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "m_rain": {
+          "autoincrement": false,
+          "name": "m_rain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_7": {
+          "autoincrement": false,
+          "name": "m_wlevel_7",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_12": {
+          "autoincrement": false,
+          "name": "m_wlevel_12",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_17": {
+          "autoincrement": false,
+          "name": "m_wlevel_17",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "daily_pos_id": {
+          "name": "daily_pos_id",
+          "columns": [
+            "pos_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "daily_pos_id_pos_id_fk": {
+          "name": "daily_pos_id_pos_id_fk",
+          "tableFrom": "daily",
+          "tableTo": "pos",
+          "columnsFrom": [
+            "pos_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "posmap": {
+      "name": "posmap",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "source": {
+          "autoincrement": false,
+          "name": "source",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "dari": {
+          "autoincrement": false,
+          "name": "dari",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ke": {
+          "autoincrement": false,
+          "name": "ke",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ke_id": {
+          "autoincrement": false,
+          "name": "ke_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "opos": {
+      "name": "opos",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nama": {
+          "autoincrement": false,
+          "name": "nama",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipe": {
+          "autoincrement": false,
+          "name": "tipe",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "latest_sampling": {
+          "autoincrement": false,
+          "name": "latest_sampling",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "autoincrement": false,
+          "name": "source",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "opos_latest_sampling": {
+          "name": "opos_latest_sampling",
+          "columns": [
+            "latest_sampling"
+          ],
+          "isUnique": false
+        },
+        "opos_nama": {
+          "name": "opos_nama",
+          "columns": [
+            "nama"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "rdaily": {
+      "name": "rdaily",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "source": {
+          "autoincrement": false,
+          "name": "source",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nama": {
+          "autoincrement": false,
+          "name": "nama",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sampling": {
+          "autoincrement": false,
+          "name": "sampling",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "raw": {
+          "autoincrement": false,
+          "name": "raw",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data_count": {
+          "autoincrement": false,
+          "name": "data_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "m_rain": {
+          "autoincrement": false,
+          "name": "m_rain",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_7": {
+          "autoincrement": false,
+          "name": "m_wlevel_7",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_12": {
+          "autoincrement": false,
+          "name": "m_wlevel_12",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "m_wlevel_17": {
+          "autoincrement": false,
+          "name": "m_wlevel_17",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "rdaily_nama_sampling": {
+          "name": "rdaily_nama_sampling",
+          "columns": [
+            "nama",
+            "sampling"
+          ],
+          "isUnique": true
+        },
+        "rdaily_sampling": {
+          "name": "rdaily_sampling",
+          "columns": [
+            "sampling"
+          ],
+          "isUnique": false
+        },
+        "rdaily_nama": {
+          "name": "rdaily_nama",
+          "columns": [
+            "nama"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "pos": {
+      "name": "pos",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nama": {
+          "autoincrement": false,
+          "name": "nama",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ll": {
+          "autoincrement": false,
+          "name": "ll",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tipe": {
+          "autoincrement": false,
+          "name": "tipe",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "elevasi": {
+          "autoincrement": false,
+          "name": "elevasi",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "latest_sampling": {
+          "autoincrement": false,
+          "name": "latest_sampling",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "latest_up": {
+          "autoincrement": false,
+          "name": "latest_up",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "das_id": {
+          "autoincrement": false,
+          "name": "das_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sungai": {
+          "autoincrement": false,
+          "name": "sungai",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sh": {
+          "autoincrement": false,
+          "name": "sh",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sk": {
+          "autoincrement": false,
+          "name": "sk",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sm": {
+          "autoincrement": false,
+          "name": "sm",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "desa": {
+          "autoincrement": false,
+          "name": "desa",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kecamatan": {
+          "autoincrement": false,
+          "name": "kecamatan",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kabupaten": {
+          "autoincrement": false,
+          "name": "kabupaten",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cdate": {
+          "autoincrement": false,
+          "name": "cdate",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mdate": {
+          "autoincrement": false,
+          "name": "mdate",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "pos_das_id_das_id_fk": {
+          "name": "pos_das_id_das_id_fk",
+          "tableFrom": "pos",
+          "tableTo": "das",
+          "columnsFrom": [
+            "das_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "petugas": {
+      "name": "petugas",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nama": {
+          "autoincrement": false,
+          "name": "nama",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "nik": {
+          "autoincrement": false,
+          "name": "nik",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hp": {
+          "autoincrement": false,
+          "name": "hp",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dusun": {
+          "autoincrement": false,
+          "name": "dusun",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rt": {
+          "autoincrement": false,
+          "name": "rt",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rw": {
+          "autoincrement": false,
+          "name": "rw",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "desa": {
+          "autoincrement": false,
+          "name": "desa",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kecamatan": {
+          "autoincrement": false,
+          "name": "kecamatan",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kabupaten": {
+          "autoincrement": false,
+          "name": "kabupaten",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pendidikan": {
+          "autoincrement": false,
+          "name": "pendidikan",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pos_id": {
+          "autoincrement": false,
+          "name": "pos_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tipe": {
+          "autoincrement": false,
+          "name": "tipe",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {
+        "petugas_pos_id": {
+          "name": "petugas_pos_id",
+          "columns": [
+            "pos_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "petugas_pos_id_pos_id_fk": {
+          "name": "petugas_pos_id_pos_id_fk",
+          "tableFrom": "petugas",
+          "tableTo": "pos",
+          "columnsFrom": [
+            "pos_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
